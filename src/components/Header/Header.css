@@ -1,0 +1,14 @@
+.cabecalho{
+    background-color: #fff159;
+    position: fixed;
+    width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
