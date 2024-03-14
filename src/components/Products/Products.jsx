@@ -19,7 +19,7 @@ export default function Products(){
             setLoading(false)
             
         })
-    }, [])
+    }, [setProducts, setLoading])
     
 
     return(
