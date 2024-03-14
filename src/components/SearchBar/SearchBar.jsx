@@ -1,19 +1,29 @@
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState, } from "react";
 import "./SearchBar.css"
+import fetchProducts from "../../api/fetchproducts";
+import AppContext from "../../context/AppContext";
+
 
 export default function SearchBar(){
 
-    const [valor, setValor] = useState('')
+    const [valor, setValor] = useState('');
+    const {setProducts, setLoading} = useContext(AppContext)
+    
 
 
-    function validar(evento){
+    async function HandleSearch(evento){
         evento.preventDefault()
-        console.log(valor)
+        setLoading(true)
+        const produtos = await fetchProducts(valor)
+        setLoading(false)
+        setValor('')
+        setProducts(produtos)
+        
     }
 
     return(
-        <form className="search_bar" onSubmit={validar}>
+        <form className="search_bar" onSubmit={HandleSearch}>
             <input 
             type="search"
             placeholder="Procure aqui seu produto"
