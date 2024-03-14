@@ -1,13 +1,20 @@
 import { MdOutlineShoppingCart } from "react-icons/md";
 import "./CartButton.css"
+import { useContext } from "react";
+import AppContext from "../../context/AppContext";
 
 
 
 export default function CartButton(){
+
+
+    const {cartItems, isCartVisible, setIsCartVisible} = useContext(AppContext)
+
+
     return(
-        <button className="cart_button">
+        <button className="cart_button" onClick={() => setIsCartVisible(!isCartVisible)}>
             <MdOutlineShoppingCart/>
-            <span className="status">1</span>
+            {cartItems.length > 0 && <span className="status">{cartItems.length}</span>}
         </button>
     )
 }
